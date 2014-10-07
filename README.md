@@ -1,14 +1,15 @@
-coma
+COMA
 ====
 
 This paper describes the COMA framework. A RAD framework intended to easily build and deploy applications that performs common listing and CRUD operation on business objects.
 There are many cases that and application is needed to perform the management of small business such video clubs, internal processes in organizaciones, etc…  these small ERP are not usually covered my the market, and ad hoc projects are usually expensive and buggy.
+
 COMA name stands for COmmon Management Applications.
 
 Goals of COMA
 =============
 
-This frameworks need to cover these aspects of software development:
+This framework needs to cover these aspects of software development:
 
 - Build fast applications with basic search and CRUD operations on business objects.
 - Offer easily changeable features. The addiction of change of a field must not take more than 5 minutes.
