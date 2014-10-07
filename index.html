@@ -1,0 +1,98 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>disier Lab - COMA example</title>
+
+    <!-- jquery -->
+    <script src="./js/jquery-latest.min.js" type="application/javascript"></script>
+
+    <!-- Bootstrap -->
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/bootstrap-notify.js"></script>
+    <script src="./js/fileinput.js"></script>
+
+    <script src="./js/base64.js"></script>
+    <script src="js/jquery.base64.js"></script>
+    <script src="js/jquery.confirm.js"></script>
+
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <link href="./css/bootstrap-notify.css" rel="stylesheet">
+    <link href="./css/fileinput.css" rel="stylesheet">
+
+    <!-- coma framework -->
+    <script src="./js/coma.js" type="application/javascript"></script>
+    <script src="./js/db.js" type="application/javascript"></script>
+
+    <!-- Load customs -->
+    <script src="./js/index.js" type="application/javascript"></script>
+
+    <!--<link href="./css/index.css" type="text/css" rel="stylesheet">-->
+
+
+
+</head>
+
+<body onload="comaInit()">
+    <div id="container ">
+
+
+        <div id="ficha_list">
+
+            <form id="ficha_list_filter" class="form-horizontal" object="Ficha" type="filter">
+                <fieldset>
+                    <!-- Form Name -->
+                    <legend>Búsqueda de fichas</legend>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="filter_nombre">Nombre</label>
+                        <div class="col-md-4">
+                            <input id="filter_nombre" name="filter_nombre" type="text" placeholder="Busuqe por nombre" class="form-control input-md">
+
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="filter_descripcion">Descripción</label>
+                        <div class="col-md-4">
+                            <input id="filter_descripcion" name="filter_descripcion" type="text" placeholder="Busque por descripcion" class="form-control input-md">
+
+                        </div>
+                    </div>
+
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="filter_buscar"></label>
+                        <div class="col-md-8">
+                            <button id="filter_buscar" name="filter_buscar" class="btn btn-success" onclick="search(event)">Buscar</button>
+                            <button id="filter_clear" name="filter_clear" class="btn btn-inverse">Borrar filtros</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+            <div id="ficha_list_results" object="Ficha" type="list">
+                <legend>Resultados</legend>
+            </div>
+
+        </div>
+
+
+        <div id="ficha_edit">
+        </div>
+    </div>
+    <!-- container -->
+
+    <div id='ajax_loader' style="position: fixed; left: 50%; top: 50%; background-color: rgba(255, 255, 255, 0.5)">
+        <img src="img/loading.gif"></img>
+    </div>
+
+    <div class='notifications top-left'></div>
+
+</body>
+
+</html>

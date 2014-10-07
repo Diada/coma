@@ -1,0 +1,11 @@
+#AuthUserFile /var/www/disier.com/db/.htpasswd
+#AuthType Basic
+#AuthName "API Access"
+#Require valid-user
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>

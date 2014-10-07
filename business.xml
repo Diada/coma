@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Business>
+    <BusinessObjects>
+        <BusinessObject id="1" name="Ficha">
+            <tablename>ficha</tablename>
+            <FeatureGroups>
+                <FeatureGroup>
+                    <id>1</id>
+                    <name>Información Basica</name>
+                    <Features>
+                        <Feature id="1">
+                            <name>Nombre</name>
+                            <data_type>text</data_type>
+                            <fieldname>nombre</fieldname>
+                            <displaylisted>yes</displaylisted>
+                        </Feature>
+                        <Feature id="2">
+                            <name>Descripcion</name>
+                            <data_type>text</data_type>
+                            <fieldname>descripcion</fieldname>
+                            <displaylisted>yes</displaylisted>
+                        </Feature>
+                    </Features>
+                </FeatureGroup>
+                <FeatureGroup>
+                    <id>2</id>
+                    <name>Recepcion</name>
+                    <Features>
+                        <Feature id="3">
+                            <name>Fecha recepcion</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaRecepcion</fieldname>
+                            <displaylisted>yes</displaylisted>
+                        </Feature>
+                        <Feature id="4">
+                            <name>Fecha envio prevista</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaEnvioPrevista</fieldname>
+                            <displaylisted>yes</displaylisted>
+                        </Feature>
+                        <Feature id="5">
+                            <name>Cliente</name>
+                            <data_type>fk</data_type>
+                            <fieldname>idCliente</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="6">
+                            <name>Serie</name>
+                            <data_type>fk</data_type>
+                            <fieldname>idSerie</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="7">
+                            <name>Capítulo</name>
+                            <data_type>text</data_type>
+                            <fieldname>capitulo</fieldname>
+                            <displaylisted>yes</displaylisted>
+                        </Feature>
+                    </Features>
+                </FeatureGroup>
+                <FeatureGroup>
+                    <id>3</id>
+                    <name>Producción</name>
+                    <Features>
+                        <Feature id="8">
+                            <name>Fecha Traducción</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaTraduccion</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="9">
+                            <name>Traductor</name>
+                            <data_type>test</data_type>
+                            <fieldname>traductor</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="10">
+                            <name>Fecha subtitulado</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaSubtitulado</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="11">
+                            <name>Fecha ajustado</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaAjustado</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="12">
+                            <name>Fecha entrega</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaEntrega</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="13">
+                            <name>Director</name>
+                            <data_type>text</data_type>
+                            <fieldname>director</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="14">
+                            <name>Ayudante</name>
+                            <data_type>test</data_type>
+                            <fieldname>ayudante</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="15">
+                            <name>Fecha inicio sala</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaInicioSala</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="16">
+                            <name>Fecha fin sala</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaFinSala</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="17">
+                            <name>Fecha doblado</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaDoblado</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="21">
+                            <name>Fecha doblado</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaDoblado</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                    </Features>
+                </FeatureGroup>
+                <FeatureGroup>
+                    <id>4</id>
+                    <name>Técnico</name>
+                    <Features>
+                        <Feature id="18">
+                            <name>Fecha mezcla</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaMezclado</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="19">
+                            <name>Tiempo mezcla</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaMezclado</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                    </Features>
+                </FeatureGroup>
+                <FeatureGroup>
+                    <id>5</id>
+                    <name>Repicados</name>
+                    <Features>
+                        <Feature id="20">
+                            <name>Fecha enviado</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaEnviado</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="21">
+                            <name>Fecha enviado</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaEnviado</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                    </Features>
+                </FeatureGroup>
+                <FeatureGroup>
+                    <id>6</id>
+                    <name>Contabilidad</name>
+                    <Features>
+                        <Feature id="22">
+                            <name>Año factura</name>
+                            <data_type>int</data_type>
+                            <fieldname>anoFactura</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="23">
+                            <name>Num. factura</name>
+                            <data_type>date</data_type>
+                            <fieldname>numeroFactura</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="24">
+                            <name>Importe</name>
+                            <data_type>float</data_type>
+                            <fieldname>importeFactura</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="25">
+                            <name>Fecha factura</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaFactura</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                        <Feature id="26">
+                            <name>Fecha cobrado</name>
+                            <data_type>date</data_type>
+                            <fieldname>fechaCobrado</fieldname>
+                            <displaylisted>yes</displaylisted>
+                        </Feature>
+                        <Feature id="27">
+                            <name>Cobrado</name>
+                            <data_type>bool</data_type>
+                            <fieldname>cobrado</fieldname>
+                            <displaylisted>no</displaylisted>
+                        </Feature>
+                    </Features>
+                </FeatureGroup>
+            </FeatureGroups>
+        </BusinessObject>
+        <BusinessObject id="2" name="Cliente">
+            <tablename>cliente</tablename>
+            <FeatureGroups>
+                <FeatureGroup>
+                    <id>1</id>
+                    <name>Información Basica</name>
+                    <Features>
+                        <Feature id="1">
+                            <name>Nombre</name>
+                            <data_type>text</data_type>
+                            <fieldname>nombre</fieldname>
+                        </Feature>
+                        <Feature id="2">
+                            <name>CIF</name>
+                            <data_type>text</data_type>
+                            <fieldname>description</fieldname>
+                        </Feature>
+                    </Features>
+                </FeatureGroup>
+            </FeatureGroups>
+        </BusinessObject>
+    </BusinessObjects>
+    <BusinessRoles>
+        <BusinessRole id="1">
+            <name>Recepcion</name>
+            <RoleAccesses>
+                <RoleAccess>
+                    <FeatureGroupId>1</FeatureGroupId>
+                    <access>W</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>2</FeatureGroupId>
+                    <access>W</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>3</FeatureGroupId>
+                    <access>W</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>4</FeatureGroupId>
+                    <access>W</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>5</FeatureGroupId>
+                    <access>W</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>6</FeatureGroupId>
+                    <access>W</access>
+                    <notes></notes>
+                </RoleAccess>
+            </RoleAccesses>
+        </BusinessRole>
+        <BusinessRole id="2">
+            <name>Recepcion</name>
+            <RoleAccesses>
+                <RoleAccess>
+                    <FeatureGroupId>1</FeatureGroupId>
+                    <access>W</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>2</FeatureGroupId>
+                    <access>R</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>3</FeatureGroupId>
+                    <access>R</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>4</FeatureGroupId>
+                    <access>R</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>5</FeatureGroupId>
+                    <access>R</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>6</FeatureGroupId>
+                    <access>R</access>
+                    <notes></notes>
+                </RoleAccess>
+            </RoleAccesses>
+        </BusinessRole>
+        <BusinessRole id="3">
+            <name>Producción</name>
+            <RoleAccesses>
+                <RoleAccess>
+                    <FeatureGroupId>1</FeatureGroupId>
+                    <access>R</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>2</FeatureGroupId>
+                    <access>W</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>3</FeatureGroupId>
+                    <access>W</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>4</FeatureGroupId>
+                    <access>W</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>5</FeatureGroupId>
+                    <access>W</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>6</FeatureGroupId>
+                    <access>R</access>
+                    <notes></notes>
+                </RoleAccess>
+            </RoleAccesses>
+        </BusinessRole>
+        <BusinessRole id="4">
+            <name>Contabilidad</name>
+            <RoleAccesses>
+                <RoleAccess>
+                    <FeatureGroupId>1</FeatureGroupId>
+                    <access>R</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>2</FeatureGroupId>
+                    <access>R</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>3</FeatureGroupId>
+                    <access>R</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>4</FeatureGroupId>
+                    <access>R</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>5</FeatureGroupId>
+                    <access>R</access>
+                    <notes></notes>
+                </RoleAccess>
+                <RoleAccess>
+                    <FeatureGroupId>6</FeatureGroupId>
+                    <access>W</access>
+                    <notes></notes>
+                </RoleAccess>
+            </RoleAccesses>
+        </BusinessRole>
+    </BusinessRoles>
+</Business>
