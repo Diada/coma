@@ -8,7 +8,10 @@ var lang = 'es';
 var Business = null;
 
 /** 
- * Errors definicion
+ * Errors definintion
+ *
+ * all functions must implement try..catch structures. In the cath a message alert will be displayed to the user.
+ * the text of the message will be the constant and the language.
  */
 
 var E0001_es = 'El formulario $1 no tiene definido el atributo "object". No se puede saber sobre que elemento se está realizando la operación';
@@ -48,10 +51,8 @@ function comaInit() {
         async: true
     });
 
-
     // Parse
     console.log('business.xml loaded: ' + Business);
-
 
     // For all <button> objects in the page, add the type="button" to avoid page reload
     $("button").attr("type", "button");
@@ -60,11 +61,11 @@ function comaInit() {
 
     console.log('Loading finished');
     loading(false);
-
-
-
 }
 
+/** For logging purposes
+ * Global variables are used for instypection from Chome javascript console
+ */
 var e;
 var current_object = null;
 
@@ -75,7 +76,7 @@ var current_object = null;
  *  1. detects the type of BusinessOfbject we are searching
  *  2. Retrive the values fo the filters to build query
  *  3. Retrieves de data from the database
- *  4. Draw the results in a list displaying the Features to be listed
+ *  4. Gives control to callback
  *
  * @param {Type} event
  */
@@ -130,10 +131,15 @@ function search(event) {
 }
 
 
-//var business_features;
-//var business_fields;
-
-
+/**
+ * Search Callback
+ *
+ * This function is invoked when we get the response form the server
+ *
+ * 1. Retrieve response (in JSON format)
+ * 2.
+ * @param {Type}
+ */
 function searchCallback() {
 
     console.log('searchCallback() executed');
@@ -142,14 +148,17 @@ function searchCallback() {
     var element_name = $(Business).find('BusinessObject[name=' + current_object + ']').find('tablename').text();
     $('#' + element_name + '_list_results').empty();
 
+    // checks data is not null
     if (RETRIEVED_DATA == null || RETRIEVED_DATA.length == null) {
         console.log('Empty data returned. Exiting');
         loading(false);
         return;
     }
 
+    // Saves retrieved data in local variable to avoid to happen to be rewriten during processing
     var data = RETRIEVED_DATA;
 
+    // Check how many rows we have
     console.log('Retrieved ' + data.length + ' entries');
     if (data.length == 0) {
         console.log('No results. Exiting...');
@@ -157,6 +166,7 @@ function searchCallback() {
         return;
     }
 
+    // Create table to display results
     var table = document.createElement("table");
     table.id = element_name + '_results_table';
 
@@ -166,7 +176,7 @@ function searchCallback() {
     var feature_number = $(Business).find('BusinessObject[name=' + current_object + ']').find('Feature name').length;
     var business_features = new Array();
 
-    // Append Id pseudo-field
+    // Append Id first pseudo-field
     business_features[0] = new BusinessFeature('Id', 'id', 1);
 
     var th = document.createElement("th");
@@ -185,6 +195,7 @@ function searchCallback() {
         var feature = new BusinessFeature(feat_name, feat_field, is_listed);
         business_features[i + 1] = feature;
 
+        // If the Feature is indicated to be listed on the XML, display it on the table header
         if (!feature.isListed()) {
             header_discarded += '[ ' + feature.Name + ' ]';
             continue;
@@ -204,9 +215,7 @@ function searchCallback() {
     console.log('There are ' + feature_number + ' features in business model');
     console.log('There are ' + retrieved_features.length + ' features in retrieved data');
 
-    // draw results
     // Iterate throught data
-
     for (var i = 0; i < data.length; i++) {
         var row_data = new Array();
 
@@ -225,15 +234,16 @@ function searchCallback() {
                 console.log('Cell ' + cell_index + ': ' + cell_data);
                 row_data[position++] = cell_data;
             }
-
         }
-        // Build cells
+        // Build row and it cells
         var tr = document.createElement("tr");
-
         for (var j = 0; j < row_data.length; j++) {
             var td = document.createElement("td");
+            // TODO: display the data depending on the data rtype
+            // TODO: display custom fields display (por ejemplo, el estado de la ficha SONIGRAF, que depende de varios campos)
             td.innerHTML = row_data[j];
             tr.appendChild(td);
+
         }
 
         // Add edit action on last column
@@ -249,7 +259,6 @@ function searchCallback() {
     $('#' + element_name + '_list_results').append(table);
 
     // Give style
-
     $('#' + element_name + '_results_table').addClass("table");
     $('#' + element_name + '_results_table').addClass("table-hover");
     $('#' + element_name + '_results_table').addClass("table-striped");
@@ -259,28 +268,21 @@ function searchCallback() {
 
 /**
  * This function is called from a checkbox along with a datepicker is checked or unchecked. It enable or disables the date picker.
- * @param {Type} event 
- */ 
-
-var control;
-var e;
+ * @param {Type} event
+ */
 function setDatepicker(event) {
     console.log('setDatepicker() invoked');
-    
-    e = event;
-    
+
     // Get the datepicker control
     var checkbox = event.target;
     var date_control_name = $('#' + checkbox.id).attr('control');
-    if(date_control_name == null || date_control_name=='')
-    {
+    if (date_control_name == null || date_control_name == '') {
         console.error('setDatepicker() checkbox ' + checkbox.id + ' does not have target control set');
         return;
     }
     var date_control = $('#' + date_control_name);
     console.log('checkbox changed for datepicker: ' + date_control_name);
-    control = date_control;
-    
+
     // Change de datepicker
     if (checkbox.checked) {
         date_control.disabled = false;
@@ -290,17 +292,37 @@ function setDatepicker(event) {
         date_control.val('');
         console.log('unchecked');
     }
-
 }
 
 
+/**
+ * This function is invoked when the user wants to view/edit a business object
+ 
+ * @param {String} ObjectName. BusinessObject name. eg "ficha" 
+ * @param {Int} Object id
+ */
+function edit(ObjectName, Id) {}
 
-function edit() {}
+/**
+ * This functions saves modified data
+ * 
+ * 1. Detect the businessObject edited
+ * 2. Creates an instance of the business object
+ * 3. Retrieve all HTML form values into every BusinessObject feature
+ * 4. Invokes the database 
+ * 
+ * @param {Type} ObjectName 
+ * @param {Type} Id 
+ */ 
+function update(ObjectName, Id) {
 
+}
 
-function update() {}
-
-
+/**
+ * displays the loading layer
+ * 
+ * @param {Type} on 
+ */ 
 function loading(on) {
     if (on)
         $("#ajax_loader").show();
@@ -326,8 +348,12 @@ function BusinessFeature(Name, FieldName, Listed, Order) {
     }
 }
 
+/**
+ * Given a Feature list
+ * @param {Type} Features 
+ * @param {Type} FieldName 
+ */ 
 function getFeaturePosition(Features, FieldName) {
-    //console.log(Features);
     for (var i = 0; i < Features.length; i++) {
         if (Features[i].FieldName == FieldName)
             return i;
