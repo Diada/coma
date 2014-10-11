@@ -68,13 +68,24 @@ function comaInit() {
 var e;
 var current_object = null;
 
+/**
+ * This function is called from a search form, from its 'search' button.
+ *
+ * the funciton automatically:
+ *  1. detects the type of BusinessOfbject we are searching
+ *  2. Retrive the values fo the filters to build query
+ *  3. Retrieves de data from the database
+ *  4. Draw the results in a list displaying the Features to be listed
+ *
+ * @param {Type} event
+ */
 function search(event) {
     try {
         loading(true);
 
         console.log('Search executed');
 
-        // Fet form and searched object
+        // Get form and searched object
         e = event;
         var form_id = event.target.form.id;
         var object_name = $('#' + form_id).attr('object');
@@ -195,7 +206,7 @@ function searchCallback() {
 
     // draw results
     // Iterate throught data
-    
+
     for (var i = 0; i < data.length; i++) {
         var row_data = new Array();
 
@@ -208,7 +219,7 @@ function searchCallback() {
                 console.log('retrieved feature ' + retrieved_features[j] + ' does not exists in model. discarding');
                 continue;
             }
-           
+
             if (business_features[cell_index].isListed()) {
                 var cell_data = data[i][retrieved_features[j]];
                 console.log('Cell ' + cell_index + ': ' + cell_data);
@@ -224,7 +235,8 @@ function searchCallback() {
             td.innerHTML = row_data[j];
             tr.appendChild(td);
         }
-        // Add edit action
+
+        // Add edit action on last column
         var td = document.createElement("td");
         td.innerHTML = '<button type="button" class="btn btn-default" onclick="edit(\'' + current_object + '\',\'' + data[i][0] + '\')"><span class=" + glyphicon glyphicon-pencil"></span> Editar</button>';
         tr.appendChild(td);
@@ -245,8 +257,46 @@ function searchCallback() {
     loading(false);
 }
 
+/**
+ * This function is called from a checkbox along with a datepicker is checked or unchecked. It enable or disables the date picker.
+ * @param {Type} event 
+ */ 
 
-function view() {}
+var control;
+var e;
+function setDatepicker(event) {
+    console.log('setDatepicker() invoked');
+    
+    e = event;
+    
+    // Get the datepicker control
+    var checkbox = event.target;
+    var date_control_name = $('#' + checkbox.id).attr('control');
+    if(date_control_name == null || date_control_name=='')
+    {
+        console.error('setDatepicker() checkbox ' + checkbox.id + ' does not have target control set');
+        return;
+    }
+    var date_control = $('#' + date_control_name);
+    console.log('checkbox changed for datepicker: ' + date_control_name);
+    control = date_control;
+    
+    // Change de datepicker
+    if (checkbox.checked) {
+        date_control.disabled = false;
+        console.log('checked');
+    } else {
+        date_control.disabled = false;
+        date_control.val('');
+        console.log('unchecked');
+    }
+
+}
+
+
+
+function edit() {}
+
 
 function update() {}
 
