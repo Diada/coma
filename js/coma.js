@@ -248,7 +248,7 @@ function searchCallback() {
 
         // Add edit action on last column
         var td = document.createElement("td");
-        td.innerHTML = '<button type="button" class="btn btn-default" onclick="edit(\'' + current_object + '\',\'' + data[i][0] + '\')"><span class=" + glyphicon glyphicon-pencil"></span> Editar</button>';
+        td.innerHTML = '<button type="button" class="btn btn-default" onclick="edit(\'' + current_object + '\',\'' + row_data[0] + '\')"><span class=" + glyphicon glyphicon-pencil"></span> Editar</button>';
         tr.appendChild(td);
         tbody.appendChild(tr);
     }
@@ -294,6 +294,7 @@ function setDatepicker(event) {
     }
 }
 
+var o;
 
 /**
  * This function is invoked when the user wants to view/edit a business object
@@ -301,7 +302,31 @@ function setDatepicker(event) {
  * @param {String} ObjectName. BusinessObject name. eg "ficha" 
  * @param {Int} Object id
  */
-function edit(ObjectName, Id) {}
+function edit(ObjectName, Id) {
+    loading(true);
+    console.log('edit(' + ObjectName + ', ' + Id + ')');
+    
+    // Get the BusinessObject
+    var business_object = new BusinessObject($(Business).find('BusinessObject[name=' + ObjectName + ']')[0]);
+    
+    console.log(business_object);
+    o = business_object;
+    
+    // Retrieve the full object from database
+    //dbSelect(table_name, null, searchCallback, null, null, filters);
+    
+    
+    loading(false);
+
+}
+
+/**
+ * This functions is called when the object is returned from database
+ */ 
+function editCallback()
+{
+    
+}
 
 /**
  * This functions saves modified data
@@ -346,6 +371,19 @@ function BusinessFeature(Name, FieldName, Listed, Order) {
             return false;
         return true;
     }
+}
+
+/**
+ * Constructor for BusinessObject.
+ * Given a XML object, it builds itseld
+ * TODO: Build also the Feature List
+ */ 
+function BusinessObject(XmlObject)
+{
+    this.Id = $(XmlObject).attr('id');
+    this.Name = $(XmlObject).attr('name');
+    this.TableName = $(XmlObject).find('tablename').text()
+    
 }
 
 /**
